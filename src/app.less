@@ -1,4 +1,45 @@
 body {
-	background: red;
-	color: white;
+	background: #eff2ed;
+	color: #0f6648;
+
+	.player-list {
+		display: table;
+		width: 100%;
+
+		.player-row {
+			display: table-row;
+			width: 100%;
+			clear: both;
+
+			.col {
+				display: table-cell;
+				width: 33%;
+				float: left;
+
+				&.player-avatar {
+					width: 20%;
+				}
+
+				&.player-name {
+					width: 40%;
+
+				}
+
+				&.player-total-score {
+					width: 10%;
+				}
+
+				&.player-par {
+					width: 20%;
+				}
+			}
+
+			.score-selector {
+				input {
+					width: 25px;
+				}
+			}
+		}
+	}
+
 }

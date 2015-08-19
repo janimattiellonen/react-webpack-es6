@@ -6,4 +6,8 @@ export default {
     getStatuses: () => {
         return axios.get('/statuses').then(res => List(res.data));
     },
+
+    getPlayers: () => {
+    	return axios.get('/players').then(res => List(res.data));
+    }
 };

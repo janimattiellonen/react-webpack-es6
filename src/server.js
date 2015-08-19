@@ -18,6 +18,18 @@ server.get('/statuses', function (req, res) {
     res.send(200, data);
 });
 
+server.get('/players', function (req, res) {
+    var data = [
+        {name: "Janimatti Ellonen", uuid: uuid.v4()},
+        {name: "Ville Mikkola", uuid: uuid.v4()},
+        {name: "Tomi Kulmala", uuid: uuid.v4()},
+        {name: "Mikko Juola", uuid: uuid.v4()},
+    ];
+
+    res.charSet('utf8');
+    res.send(200, data);
+});
+
 server.listen(config.server.port, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
