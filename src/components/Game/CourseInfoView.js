@@ -6,14 +6,16 @@ export default React.createClass({
 
 	getInitialState() {
 		return {
-			'players': Immutable.List()
+			'name': '',
+			'par': 0,
+			'length': 0
 		}
 	},
 
 
 	render() {
 		return (
-			<div>Tali</div>
+			<div>{this.props.course.name}: {this.props.course.holes} holes, {this.props.course.length}m, par {this.props.course.par}</div>
 		);
 	}
 });

@@ -18,7 +18,7 @@ export default React.createClass({
 			<div className="player-row">
 				<div className="player-avatar col">LUSS</div>
 				<div className="player-name col">{player.name}</div>
-				<div className="player-par col"><ScoreSelector /></div>
+				<div className="player-par col"><ScoreSelector player={player}/></div>
 				<div className="player-total-score col">-15</div>
 			</div>
 		);

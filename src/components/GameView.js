@@ -5,7 +5,6 @@ import CourseInfoView from "./Game/CourseInfoView";
 import PlayerList from "./Game/PlayerList";
 
 export default React.createClass({
-
 	getInitialState() {
 		return {
 			'players': Immutable.List()
@@ -13,9 +12,16 @@ export default React.createClass({
 	},
 
 	render() {
+		let course = {
+			name: 'Tali',
+			holes: 18,
+			par: 58,
+			length: 1865
+		};
+
 		return (
 			<div>
-				<CourseInfoView />
+				<CourseInfoView course={course}/>
 
 				<div><PlayerList players={this.state.players}/></div>
 			</div>
