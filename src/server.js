@@ -18,6 +18,18 @@ server.get('/statuses', function (req, res) {
     res.send(200, data);
 });
 
+server.get('/courses', function(req, res) {
+    var data = [
+        {value: "10", label: "Tali"},
+        {value: "405", label: "Kivikko" },
+        {value: "340", label: "Oittaa" },
+        {value: "73", label: "Siltamäki" },
+    ];
+
+    res.charSet('utf8');
+    res.send(200, data);
+});
+
 server.get('/players', function (req, res) {
     var data = [
         {name: "Janimatti Ellonen", uuid: uuid.v4()},

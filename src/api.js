@@ -9,5 +9,9 @@ export default {
 
     getPlayers: () => {
     	return axios.get('/players').then(res => List(res.data));
+    },
+
+    getCourses: (term) => {
+    	return axios.get('/courses?term=' + term).then(res => List(res.data));
     }
 };
