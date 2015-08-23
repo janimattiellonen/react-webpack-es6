@@ -30,4 +30,4 @@ export default handleActions({
 		};
 	}
 
-}, List());
+}, {courses: List()});

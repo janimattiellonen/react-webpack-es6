@@ -58,11 +58,10 @@ export default React.createClass({
 
 				<div>
 					<ul>
-
-					{this.props.courses.map(course => {
-						console.log("xoxox: " + course.label);
-						<li>{course.value}:{course.label}</li>
-					})}
+						{this.props.courses.map(course => {
+							console.log("xoxox: " + course.label);
+							return (<li>:{course.label}</li>);
+						})}
 					</ul>
 				</div>
 			</div>

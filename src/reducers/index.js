@@ -1,3 +1,3 @@
 export { default as players } from './players';
-export { default as courses } from './courses';
+export { default as course } from './courses';
 

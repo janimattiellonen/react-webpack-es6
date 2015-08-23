@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 
 @connect(state => {
     return {
-        courses: state.courses,
+        courses: state.course.courses,
         course: state.course
     }
 })    
