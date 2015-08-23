@@ -8,7 +8,7 @@ import Select from "react-select";
 export default React.createClass({
 	getInitialState() {
 		return {
-			'players': Immutable.List()
+			'players': Immutable.List(),
 		}
 	},
 
@@ -24,12 +24,22 @@ export default React.createClass({
 
 
 		let getOptions = function(input, callback) {	
+			console.log("INPUT: " + input);
 		    setTimeout(() => {
-		    	//dispatch(PlayerActions.foo());
-		    	self.props.playerActions.foo();
 		    	self.loadCourses(input, callback);
 		    }, 500);
 		};		
+
+		console.log("wut: " + JSON.stringify(this.props.courses));
+
+
+		let arr = [
+			10,12,13,14
+		];
+
+		arr.map(val => {
+			console.log("arr: " + val);
+		});
 
 		return (
 			<div>
@@ -45,6 +55,16 @@ export default React.createClass({
 				/>
 
 				<div><PlayerList players={this.state.players}/></div>
+
+				<div>
+					<ul>
+
+					{this.props.courses.map(course => {
+						console.log("xoxox: " + course.label);
+						<li>{course.value}:{course.label}</li>
+					})}
+					</ul>
+				</div>
 			</div>
 			
 		);
@@ -64,13 +84,17 @@ export default React.createClass({
 
 	loadCourses(input, callback) {
 		Api.getCourses().then(courses => {
+			
     		let selections = {options: courses.toArray(), complete: false};
-
+    		console.log("ttt: " + JSON.stringify(courses));
 			callback(null, selections);
+			this.props.courseActions.setCourses(courses);
 		});
 	},
 
 	logChange(val) {
 	    console.log("Selected: " + val);
+
+	    //console.log("COURSE INFO: " + JSON.stringify(this.props.courseActions.selectedCourse(val)));
 	}    
 });

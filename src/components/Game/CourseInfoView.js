@@ -15,7 +15,7 @@ export default React.createClass({
 
 	render() {
 		return (
-			<div>{this.props.course.name}: {this.props.course.holes} holes, {this.props.course.length}m, par {this.props.course.par}</div>
+			<div>{this.props.course.value}: {this.props.course.label} holes, {this.props.course.value}m, par {this.props.course.label}</div>
 		);
 	}
 });
