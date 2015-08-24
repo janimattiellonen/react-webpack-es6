@@ -10,7 +10,8 @@ import { bindActionCreators } from 'redux';
 @connect(state => {
     return {
         courses: state.course.courses,
-        course: state.course
+        d: state.course.d,
+        selectedCourse: state.course.selectedCourse
     }
 })    
 export default class TestApp extends React.Component {
@@ -26,12 +27,13 @@ export default class TestApp extends React.Component {
                     this.props.children,
                     {
                         courses: this.props.courses,
-                        course: this.props.course,
+                        selectedCourse: this.props.selectedCourse,
+                        d: this.props.d,
                         courseActions: courseActions,
                         playerActions: playerActions
                     }
                 )}
             </div>
         );
-    }
+    } 
 };

@@ -1,18 +1,20 @@
 import { handleActions } from 'redux-actions';
 import { List } from 'immutable';
+import moment from 'moment';
 
 export default handleActions({
 
 	SET_COURSES: (state, action) => {
-		console.log("nut: " + JSON.stringify(action.courses));
-
+		
 		return {
 			...state,
-			courses: action.courses
+			courses: action.courses,
+			d: state.d
 		};
 	},
 
 	GET_COURSES: (state, action) => {
+		console.log("GET_COURSES");
 		return {
 			...state,
 			courses: state.courses
@@ -20,14 +22,13 @@ export default handleActions({
 	},
 
 	SELECTED_COURSE: (state, action) => {
-		let courses = state.courses.filter(course => course.value == action.id);
-		console.log("lussendorff: " + JSON.stringify(state.courses));
-		console.log("filtered: " + JSON.stringify(courses));
-		
+		let d = moment(state.d);
+		console.log("wweee: " + JSON.stringify(action));
 		return {
 			...state,
-			course: courses.size == 1 ? courses.get(0) : null
+			selectedCourse: action.selectedCourse,
+			d: d
 		};
 	}
 
-}, {courses: List()});
+}, {courses: List(), d: moment(), selectedCourse: null});

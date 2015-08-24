@@ -22,7 +22,6 @@ export default React.createClass({
     },
 
 	getStatuses() {
-		console.log("luss");
 		Api.getStatuses().then(statuses => {
 			this.setState({
 				'statuses': statuses
