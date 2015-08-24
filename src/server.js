@@ -20,10 +20,10 @@ server.get('/statuses', function (req, res) {
 
 server.get('/courses', function(req, res) {
     var data = [
-        {value: "10", label: "Tali"},
-        {value: "405", label: "Kivikko" },
-        {value: "340", label: "Oittaa" },
-        {value: "73", label: "Siltamäki" },
+        {value: "10", label: "Tali", par: 57, length: 1334, holes: 18},
+        {value: "405", label: "Kivikko", par: 56, length: 1250, holes: 18 },
+        {value: "340", label: "Oittaa" , par: 45, length: 900, holes: 12},
+        {value: "73", label: "Siltamäki", par: 56, length: 1100, holes: 18 },
     ];
 
     res.charSet('utf8');

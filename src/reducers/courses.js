@@ -31,4 +31,4 @@ export default handleActions({
 		};
 	}
 
-}, {courses: List(), d: moment(), selectedCourse: null});
+}, {courses: List(), d: moment(), selectedCourse: {}});

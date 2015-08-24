@@ -4,27 +4,17 @@ import Api from "../../api";
 
 export default React.createClass({
 
-	getDefaultProps() {
-		return {
-			selectedCourse: {
-				value: 1,
-				label: "",
-				par: 0
-			}
-		}
-	},
-
-
-
 	shouldComponentUpdatse: function(nextProps, nextState) {
-		console.log("luss");
 		return true;
 	},
 
 	render() {
-		console.log("rendering this..." + JSON.stringify(this.props.course));
+
+		console.log("rendering this..." + JSON.stringify(this.props));
 		return (
-			<div>{this.props.course.value}: {this.props.course.label} holes, {this.props.course.value}m, par {this.props.course.label}</div>
+			<div>
+				{this.props.course.label}: {this.props.course.holes} holes, {this.props.course.length}m, par {this.props.course.par}
+			</div>
 		);
 	}
 });
