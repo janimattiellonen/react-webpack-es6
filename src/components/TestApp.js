@@ -2,9 +2,9 @@ import React from 'react';
 import Router, {RouteHandler} from 'react-router';
 import { connect } from 'react-redux';
 
-import * as PlayerActions from '../actions/PlayerActions';
 import * as CourseActions from '../actions/CourseActions';
-
+import * as GameActions from '../actions/GameActions';
+import * as PlayerActions from '../actions/PlayerActions';
 import { bindActionCreators } from 'redux';
 
 @connect(state => {
@@ -18,8 +18,9 @@ export default class TestApp extends React.Component {
     render() {
 
         const { dispatch } = this.props;
-        const playerActions = bindActionCreators(PlayerActions, dispatch);
         const courseActions = bindActionCreators(CourseActions, dispatch);
+        const gameActions = bindActionCreators(GameActions, dispatch);
+        const playerActions = bindActionCreators(PlayerActions, dispatch);
 
         return (
             <div>
@@ -29,7 +30,9 @@ export default class TestApp extends React.Component {
                         courses: this.props.courses,
                         selectedCourse: this.props.selectedCourse,
                         d: this.props.d,
+
                         courseActions: courseActions,
+                        gameActions: gameActions,
                         playerActions: playerActions
                     }
                 )}

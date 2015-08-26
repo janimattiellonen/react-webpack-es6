@@ -5,10 +5,13 @@ import CourseInfoView from "./Game/CourseInfoView";
 import PlayerList from "./Game/PlayerList";
 import Select from "react-select";
 
+import { Button } from 'react-bootstrap';
+
 export default React.createClass({
+
 	getInitialState() {
 		return {
-			'players': Immutable.List(),
+			players: Immutable.List()
 		}
 	},
 
@@ -37,6 +40,7 @@ export default React.createClass({
 
 		return (
 			<div>		
+				<h2>Valitse rata</h2>
 				<CourseInfoView course={ selectedCourse }/>
 				
 				<Select
@@ -46,27 +50,19 @@ export default React.createClass({
 					autoload={false}
 					cacheAsyncResults={false}
 					asyncOptions={getOptions}
-					onChange={this.logChange}
+					onChange={this.changeValue}
 				/>
 				
 				<div><PlayerList players={this.state.players}/></div>
 
 				<div>
-					<ul>
-						{courses.map(course => {
-							return (<li key={course.value}>:{course.label}</li>);
-						})}
-					</ul>
+					<Button bsStyle='primary' href="/#/select-players" bsSize='small' disabled={!this.isSubmittable()}>Seuraava - valitse pelaajat</Button>
 				</div>
 			</div>
-			
 		);
 	},
 
 	shouldComponentUpdate: function(nextProps, nextState) {
-		console.log("should update: " + (nextProps.d === this.props.d));
-		console.log("this.props.d: " + this.props.d + ", nextProps.d: " + nextProps.d);
-
   		return nextProps.d !== this.props.d;
 	},
 
@@ -90,11 +86,14 @@ export default React.createClass({
 		});
 	},
 
-	logChange(val) {
 
+	changeValue(newValue) {
 		const { courseActions } = this.props;
 
-	    console.log("Selected: " + val);
-	    courseActions.setSelectedCourseId(val);
+	    courseActions.setSelectedCourseId(newValue);
+	},
+
+	isSubmittable() {
+		return this.props.selectedCourse && this.props.selectedCourse.label;
 	}    
 });
