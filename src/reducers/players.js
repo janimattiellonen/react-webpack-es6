@@ -1,16 +1,16 @@
 import { handleActions } from 'redux-actions';
 import { List } from 'immutable';
+import moment from 'moment';
 
 export default handleActions({
 
-	FOO: (state, action) => {
-		console.log("FOO called...");
+	SET_PLAYERS: (state, action) => {
 		
-		return state;
+		return {
+			...state,
+			players: action.players,
+			d: state.d
+		};
 	},
 
-    RECEIVE_PLAYERS: (state, action) => {
-        return action.players
-    },
-
-}, List());
+}, { players: List(), d: moment()});

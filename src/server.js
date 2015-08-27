@@ -32,10 +32,10 @@ server.get('/courses', function(req, res) {
 
 server.get('/players', function (req, res) {
     var data = [
-        {name: "Janimatti Ellonen", uuid: uuid.v4()},
-        {name: "Ville Mikkola", uuid: uuid.v4()},
-        {name: "Tomi Kulmala", uuid: uuid.v4()},
-        {name: "Mikko Juola", uuid: uuid.v4()},
+        {value: "2525", label: "Janimatti Ellonen", uuid: uuid.v4()},
+        {value: "123", label: "Ville Mikkola", uuid: uuid.v4()},
+        {value: "46", label: "Tomi Kulmala", uuid: uuid.v4()},
+        {value: "78", label: "Mikko Juola", uuid: uuid.v4()},
     ];
 
     res.charSet('utf8');

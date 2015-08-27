@@ -1,22 +1,30 @@
 import api from '../api'
+import _ from 'lodash';
 
-function receivePlayers(players) {
+export function setPlayers(players, d) {
     return {
-        type: 'RECEIVE_PLAYERS',
-        players: players
+        type: 'SET_PLAYERS',
+        players: players,
+        d: d
     };
 }
 
-export function foo() {
-	return {
-		type: 'FOO'
-	};
-}
+export function setSelectedPlayerIds(selectedPlayerIds) {
+    console.log("uuuu");
+    return function(dispatch, getState) {
+        const { players} = getState().players;
 
-export function fetchplayers(d) {
-    return function(dispatch) {
-        api.getPlayers().then(players => {
-           // dispatch(receivePlayers(players));
+        let found = players.filter(function(player) {
+            return _.includes(selectedPlayerIds, player.value);
         });
+
+        dispatch(selectedPlayers(found));
+    }
+}
+
+export function selectedPlayers(selectedPlayers) {
+    return {
+        type: 'SELECTED_PLAYERS',
+        selectedPlayers: selectedPlayers
     };
-};
+}

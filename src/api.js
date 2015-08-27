@@ -3,12 +3,8 @@ import axios from 'axios';
 import { List } from 'immutable';
 
 export default {
-    getStatuses: () => {
-        return axios.get('/statuses').then(res => List(res.data));
-    },
-
-    getPlayers: () => {
-    	return axios.get('/players').then(res => List(res.data));
+    getPlayers: (term) => {
+    	return axios.get('/players?term=' + term).then(res => List(res.data));
     },
 
     getCourses: (term) => {
