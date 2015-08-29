@@ -13,4 +13,12 @@ export default handleActions({
 		};
 	},
 
-}, { players: List(), d: moment()});
+	SELECTED_PLAYERS: (state, action) => {
+		return {
+			...state,
+			selectedPlayers: action.selectedPlayers,
+			selectedPlayersJoined: action.selectedPlayersJoined
+		};
+	}
+
+}, { players: List(), selectedPlayers: List(), selectedPlayersJoined: "", d: moment()});

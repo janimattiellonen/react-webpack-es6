@@ -11,7 +11,9 @@ import { bindActionCreators } from 'redux';
     return {
         courses: state.course.courses,
         d: state.course.d,
-        selectedCourse: state.course.selectedCourse
+        selectedCourse: state.course.selectedCourse,
+        selectedPlayers: state.players.selectedPlayers,
+        selectedPlayersJoined: state.players.selectedPlayersJoined
     }
 })    
 export default class TestApp extends React.Component {
@@ -29,6 +31,8 @@ export default class TestApp extends React.Component {
                     {
                         courses: this.props.courses,
                         selectedCourse: this.props.selectedCourse,
+                        selectedPlayers: this.props.selectedPlayers,
+                        selectedPlayersJoined: this.props.selectedPlayersJoined,
                         d: this.props.d,
 
                         courseActions: courseActions,

@@ -7,29 +7,52 @@ import Select from "react-select";
 export default React.createClass({
 
 	render() {
-
+		console.log("PlayerSelectionView.render()");
 		let self = this;
 
 		let getOptions = function(input, callback) {	
-			console.log("INPUT: " + input);
+			console.log("INPUT2: " + input);
 		    setTimeout(() => {
 		    	self.loadPlayers(input, callback);
 		    }, 500);
 		};		
+
+
+		let options = [
+			{value: "2525", label: 'Janimatti Ellonen', uuid: "rdsgdfgdf"},
+			{value: "78", label: 'Mikko Juola', uuid: "dzfjhdfkjghdkjdfh"}
+		];	
+
+		console.log("PlayerSelectionView.render() joined: " + this.props.selectedPlayersJoined);
+
+		console.log("PlayerSelectionView.render(), selected players: " + JSON.stringify(this.props.selectedPlayers));
+
+		console.log("PlayerSelectionView.render(), options: " + JSON.stringify(options));
+
 
 		return (
 			<div>
 				<h2>Valitse pelaajat</h2>
 
 				<Select
+					name="test"
+					options={options}
+					multi={true}
+					value="2525,78"
+				/>	
+
+				<Select
 					name="players"
 					multi={true}
+					value={this.props.selectedPlayersJoined}
 					searchable={true}
 					autoload={false}
+					options={this.props.selectedPlayers.toArray()}
 					cacheAsyncResults={false}
 					asyncOptions={getOptions}
 					onChange={this.changeValue}
-				></Select>
+				>
+				</Select>
 
 				<div>
 					<Button bsStyle='primary' href="/#/new-game" bsSize='small'>Edellinen - valitse rata</Button>
@@ -41,7 +64,15 @@ export default React.createClass({
 
 	loadPlayers(input, callback) {
 
-		const {d} = this.props;
+		const {d, selectedPlayers, selectedPlayersJoined} = this.props;
+
+		let options = [];
+
+		console.log("ooo: " + JSON.stringify(selectedPlayers));
+
+		callback(null, {
+			options: []
+		});
 
 		Api.getPlayers(input).then(players => {
 			
@@ -49,6 +80,7 @@ export default React.createClass({
 			callback(null, selections);
 			this.props.playerActions.setPlayers(players, d);
 		});
+
 	},
 
 	changeValue(newValue) {
