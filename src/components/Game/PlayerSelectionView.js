@@ -17,29 +17,13 @@ export default React.createClass({
 		    }, 500);
 		};		
 
-
-		let options = [
-			{value: "2525", label: 'Janimatti Ellonen', uuid: "rdsgdfgdf"},
-			{value: "78", label: 'Mikko Juola', uuid: "dzfjhdfkjghdkjdfh"}
-		];	
-
 		console.log("PlayerSelectionView.render() joined: " + this.props.selectedPlayersJoined);
 
 		console.log("PlayerSelectionView.render(), selected players: " + JSON.stringify(this.props.selectedPlayers));
 
-		console.log("PlayerSelectionView.render(), options: " + JSON.stringify(options));
-
-
 		return (
 			<div>
 				<h2>Valitse pelaajat</h2>
-
-				<Select
-					name="test"
-					options={options}
-					multi={true}
-					value="2525,78"
-				/>	
 
 				<Select
 					name="players"
@@ -70,9 +54,6 @@ export default React.createClass({
 
 		console.log("ooo: " + JSON.stringify(selectedPlayers));
 
-		callback(null, {
-			options: []
-		});
 
 		Api.getPlayers(input).then(players => {
 			

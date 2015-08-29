@@ -29,11 +29,23 @@ export default React.createClass({
 
 
 		let getOptions = function(input, callback) {	
-			console.log("INPUT: " + input);
 		    setTimeout(() => {
-		    	//self.props.courseActions.getCourses();
 		    	self.loadCourses(input, callback);
 		    }, 500);
+		};		
+
+		let renderOption = function(course) {
+			console.log("OPTION: " + JSON.stringify(course));
+
+			return (
+				<div>
+					<h2><strong>{course.label}</strong></h2>
+
+					<p>
+						<strong>Layout:</strong> {course.layout.name}: {course.layout.holes}, par {course.layout.par}, {course.layout.length}m
+					</p>
+				</div>
+			);
 		};		
 
 		console.log("wut2: " + JSON.stringify(selectedCourse));
@@ -50,11 +62,10 @@ export default React.createClass({
 					autoload={false}
 					cacheAsyncResults={false}
 					asyncOptions={getOptions}
+					optionRenderer={renderOption}
 					onChange={this.changeValue}
-				/>
+				></Select>
 				
-				<div><PlayerList players={this.state.players}/></div>
-
 				<div>
 					<Button bsStyle='primary' href="/#/select-players" bsSize='small' disabled={!this.isSubmittable()}>Seuraava - valitse pelaajat</Button>
 				</div>

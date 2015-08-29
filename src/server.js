@@ -20,10 +20,11 @@ server.get('/statuses', function (req, res) {
 
 server.get('/courses', function(req, res) {
     var data = [
-        {value: "10", label: "Tali", par: 57, length: 1334, holes: 18},
-        {value: "405", label: "Kivikko", par: 56, length: 1250, holes: 18 },
-        {value: "340", label: "Oittaa" , par: 45, length: 900, holes: 12},
-        {value: "73", label: "Siltamäki", par: 56, length: 1100, holes: 18 },
+        {value: "11", label: "Tali", par: 57, length: 1334, holes: 18, layout: {id: 11, name: "Tali", par: 57, length: 1334, holes: 18}},
+        {value: "12", label: "Kivikko", par: 56, length: 1250, holes: 18, layout: {id: 12, name: "Kivikko", par: 56, length: 1250, holes: 18}},
+        {value: "13", label: "Oittaa" , par: 45, length: 900, holes: 12, layout: {id: 13, name: "Oittaa", par: 45, length: 900, holes: 12}},
+        {value: "14", label: "Kaatis", par: 63, length: 2193, holes: 19, layout: {id: 14, name: "19-etu", par: 63, length: 2193, holes: 19}},
+        {value: "15", label: "Kaatis", par: 63, length: 2623, holes: 19, layout: {id: 15, name: "19-taka", par: 63, length: 2623, holes: 19}},
     ];
 
     res.charSet('utf8');
