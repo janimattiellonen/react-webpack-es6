@@ -40,7 +40,7 @@ export default React.createClass({
 
 				<div>
 					<Button bsStyle='primary' href="/#/new-game" bsSize='small'>Edellinen - valitse rata</Button>
-					<Button bsStyle='primary' href="/#/select-players" bsSize='small'>Valmis!</Button>
+					<Button bsStyle='primary' href="/#/confirm-selections" bsSize='small'>Valmis!</Button>
 				</div>
 			</div>
 		)

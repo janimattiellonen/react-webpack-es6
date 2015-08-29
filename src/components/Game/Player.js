@@ -1,7 +1,6 @@
 import React from "react";
 import Immutable from "immutable";
 import Api from "../../api";
-import ScoreSelector from "./ScoreSelector";
 
 export default React.createClass({
 
@@ -17,9 +16,7 @@ export default React.createClass({
 		return (
 			<div className="player-row">
 				<div className="player-avatar col">LUSS</div>
-				<div className="player-name col">{player.name}</div>
-				<div className="player-par col"><ScoreSelector player={player}/></div>
-				<div className="player-total-score col">-15</div>
+				<div className="player-name col">{player.label}</div>
 			</div>
 		);
 	}

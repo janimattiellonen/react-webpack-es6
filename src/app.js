@@ -8,6 +8,7 @@ import TestApp from "./components/TestApp";
 import Intro from "./components/IntroView";
 import GameView from "./components/GameView";
 import PlayerSelectionView from "./components/Game/PlayerSelectionView";
+import ConfirmSelectionsView from "./components/Game/ConfirmSelectionsView";
 
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
@@ -28,6 +29,7 @@ React.render(
 		            <Route name="intro" path="intro" component={Intro}/>
 		            <Route name="game" path="new-game" component={GameView}/>
 		            <Route name="select-players" path="select-players" component={PlayerSelectionView}/>
+		            <Route name="confirm-selections" path="confirm-selections" component={ConfirmSelectionsView}/>
 		        </Route>
 		    </Router>	
 		}
