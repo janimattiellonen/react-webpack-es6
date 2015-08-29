@@ -1,0 +1,33 @@
+Localstorage:
+
+	Needs to store:
+
+		- selected course details
+			- course name
+			- course id
+			- layout name
+			- layout id
+			- layout hole count
+			- layout length
+			- layout holes
+				- number
+				- par
+				- length
+			- players
+				- player id
+				- player name
+				- player scores
+
+
+Flows:
+
+Starting a new game:
+
+	1) select course
+	2) select players
+	3) confirm selections	
+		- options to change course and players
+	4) start game
+		- load complete course details such as hole data
+			- hole data not required when selecting course and players for the game
+			- optionally load complete course details when the user selects a course

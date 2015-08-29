@@ -4,10 +4,6 @@ import Api from "../../api";
 
 export default React.createClass({
 
-	shouldComponentUpdatse: function(nextProps, nextState) {
-		return true;
-	},
-
 	render() {
 
 		if(!this.props.course.label) {
@@ -17,7 +13,9 @@ export default React.createClass({
 		} else {
 			return (
 				<div>
-					{this.props.course.label}: {this.props.course.holes} holes, {this.props.course.length}m, par {this.props.course.par}
+					<h3>{this.props.course.label}</h3>
+
+					Layout: {this.props.course.layout.name}, {this.props.course.layout.holes} holes, {this.props.course.layout.length}m, par {this.props.course.layout.par}
 				</div>
 			);
 		}

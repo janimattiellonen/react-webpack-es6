@@ -17,14 +17,20 @@ export default React.createClass({
 			<div>
 				<h2>Vahvista valinnat</h2>
 
+
+				<h3>Valittu rata</h3>
 				<CourseInfoView course={ selectedCourse }/>
 
 				<Button bsStyle='primary' href="/#/new-game" bsSize='small'>Muokkaa ratavalintaa</Button>
-				<br/><br/>
+				
+				<h3>Valitut pelaajat</h3>
 
 				<PlayerList players={selectedPlayers} />
 
 				<Button bsStyle='primary' href="/#/select-players" bsSize='small'>Muokka pelaajavalintoja</Button>
+
+				<br/><br/>
+				<Button bsStyle='primary' href="/#/start" bsSize='small'>Aloita peli!</Button>
 
 			</div>
 		);
