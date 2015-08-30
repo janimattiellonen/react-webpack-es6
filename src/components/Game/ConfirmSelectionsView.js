@@ -30,7 +30,7 @@ export default React.createClass({
 				<Button bsStyle='primary' href="/#/select-players" bsSize='small'>Muokka pelaajavalintoja</Button>
 
 				<br/><br/>
-				<Button bsStyle='primary' href="/#/start" bsSize='small'>Aloita peli!</Button>
+				<Button bsStyle='primary' href="/#/game" bsSize='small'>Aloita peli!</Button>
 
 			</div>
 		);
