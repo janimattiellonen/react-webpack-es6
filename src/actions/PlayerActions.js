@@ -1,4 +1,5 @@
 import api from '../api'
+import store from 'store';
 import _ from 'lodash';
 
 export function setPlayers(players, d) {
@@ -33,9 +34,14 @@ export function selectedPlayers(selectedPlayers) {
     console.log("PlayerActions.selectedPlayers(): selected players: " + JSON.stringify(selectedPlayers));
     console.log("PlayerActions.selectedPlayers(): selected player ids: " + JSON.stringify(ids));
 
+    let selectedPlayersJoined = ids.join(',');
+
+    store.set('SELECTED_PLAYERS', selectedPlayers);
+    store.set('SELECTED_PLAYERS_JOINED', selectedPlayersJoined);
+
     return {
         type: 'SELECTED_PLAYERS',
         selectedPlayers: selectedPlayers,
-        selectedPlayersJoined: ids.join(',')
+        selectedPlayersJoined: selectedPlayersJoined
     };
 }

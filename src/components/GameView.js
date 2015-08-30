@@ -4,7 +4,7 @@ import Api from "../api";
 import CourseInfoView from "./Game/CourseInfoView";
 import PlayerList from "./Game/PlayerList";
 import Select from "react-select";
-
+import store from 'store';
 import { Button } from 'react-bootstrap';
 
 export default React.createClass({
@@ -23,9 +23,10 @@ export default React.createClass({
 			length: 1865
 		};
 
-		const {courses, d, selectedCourse} = this.props;
+		const {courses, d, selectedCourse, courseActions} = this.props;
 
 		let self = this;
+
 
 
 		let getOptions = function(input, callback) {	
@@ -33,9 +34,8 @@ export default React.createClass({
 		    	self.loadCourses(input, callback);
 		    }, 500);
 		};		
-
+		console.log("444");
 		let renderOption = function(course) {
-			console.log("OPTION: " + JSON.stringify(course));
 
 			return (
 				<div>
@@ -47,8 +47,6 @@ export default React.createClass({
 				</div>
 			);
 		};		
-
-		console.log("wut2: " + JSON.stringify(selectedCourse));
 
 		return (
 			<div>		
@@ -73,6 +71,18 @@ export default React.createClass({
 		);
 	},
 
+	componentDidMount() {
+		const {selectedCourse, courseActions} = this.props;
+
+		if (!selectedCourse.value) {
+			let sc = store.get('SELECTED_COURSE');
+
+			if (sc) {
+				courseActions.selectedCourse(sc);
+			}
+		}
+	}, 
+
 	shouldComponentUpdate: function(nextProps, nextState) {
   		return nextProps.d !== this.props.d;
 	},
@@ -90,7 +100,6 @@ export default React.createClass({
 		const {d} = this.props;
 
 		Api.getCourses(input).then(courses => {
-			
     		let selections = {options: courses.toArray()};
 			callback(null, selections);
 			this.props.courseActions.setCourses(courses, d);

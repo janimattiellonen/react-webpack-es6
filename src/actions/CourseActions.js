@@ -1,4 +1,5 @@
 import api from '../api';
+import store from 'store';
 
 export function setCourses(courses, d) {
 	return {
@@ -26,6 +27,8 @@ export function setSelectedCourseId(id) {
 }
 
 export function selectedCourse(selectedCourse) {
+	store.set('SELECTED_COURSE', selectedCourse);
+
 	return {
 		type: 'SELECTED_COURSE',
 		selectedCourse: selectedCourse

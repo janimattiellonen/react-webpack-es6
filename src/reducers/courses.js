@@ -14,7 +14,6 @@ export default handleActions({
 	},
 
 	GET_COURSES: (state, action) => {
-		console.log("GET_COURSES");
 		return {
 			...state,
 			courses: state.courses
@@ -23,7 +22,7 @@ export default handleActions({
 
 	SELECTED_COURSE: (state, action) => {
 		let d = moment(state.d);
-		console.log("wweee: " + JSON.stringify(action));
+		
 		return {
 			...state,
 			selectedCourse: action.selectedCourse,

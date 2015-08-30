@@ -1,5 +1,6 @@
 import React from "react";
 import Immutable from "immutable";
+import store from 'store';
 import Api from "../../api";
 import { Button } from 'react-bootstrap';
 import Select from "react-select";
@@ -40,20 +41,29 @@ export default React.createClass({
 
 				<div>
 					<Button bsStyle='primary' href="/#/new-game" bsSize='small'>Edellinen - valitse rata</Button>
-					<Button bsStyle='primary' href="/#/confirm-selections" bsSize='small'>Valmis!</Button>
+					<Button bsStyle='primary' href="/#/confirm-selections" bsSize='small' disabled={!this.isSubmittable()}>Valmis!</Button>
 				</div>
 			</div>
 		)
 	},
+
+	componentDidMount() {
+		const {courses, d, selectedPlayers, playerActions} = this.props;
+
+		if (!selectedPlayers || selectedPlayers.size == 0) {
+			let sp = store.get('SELECTED_PLAYERS');
+			
+			if (sp) {
+				playerActions.selectedPlayers(Immutable.List(sp));
+			}
+		}
+	}, 
 
 	loadPlayers(input, callback) {
 
 		const {d, selectedPlayers, selectedPlayersJoined} = this.props;
 
 		let options = [];
-
-		console.log("ooo: " + JSON.stringify(selectedPlayers));
-
 
 		Api.getPlayers(input).then(players => {
 			
@@ -71,4 +81,9 @@ export default React.createClass({
 		console.log("selected player ids: " + selectedPlayerIds + ", size: " + selectedPlayerIds.length);
 	    playerActions.setSelectedPlayerIds(selectedPlayerIds);
 	},
+
+	isSubmittable() {
+		console.log(JSON.stringify(this.props));
+		return this.props.selectedPlayers && this.props.selectedPlayers.size > 0;
+	}    
 });
