@@ -16,25 +16,16 @@ export default React.createClass({
 	},
 
 	render() {
-		let course = {
-			name: 'Tali',
-			holes: 18,
-			par: 58,
-			length: 1865
-		};
-
 		const {courses, d, selectedCourse, courseActions} = this.props;
 
 		let self = this;
-
-
 
 		let getOptions = function(input, callback) {	
 		    setTimeout(() => {
 		    	self.loadCourses(input, callback);
 		    }, 500);
 		};		
-		console.log("444");
+
 		let renderOption = function(course) {
 
 			return (

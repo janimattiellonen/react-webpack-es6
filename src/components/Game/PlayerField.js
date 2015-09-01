@@ -41,6 +41,6 @@ export default React.createClass({
 	setScore(score, hole) {
 		const { player, gameActions} = this.props;
 
-		gameActions.setScoreFor(player.value, hole, score);
+		gameActions.setScoreFor(player, hole, score);
 	},	
 });

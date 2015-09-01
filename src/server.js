@@ -31,6 +31,38 @@ server.get('/courses', function(req, res) {
     res.send(200, data);
 });
 
+server.get('/course/:id/layout/:lid', function(req, res) {
+
+    var course = {
+        id: 340,
+        name: 'Oittaa',
+        layout: {
+            id: 340,
+            name: 'Oittaa',
+            holeCount: 12,
+            par: 36.
+            length: 867,
+            holes: [
+                {number: 1, par: 3, length: 53},
+                {number: 2, par: 3, length: 80},
+                {number: 3, par: 3, length: 71},
+                {number: 4, par: 4, length: 129},
+                {number: 5, par: 3, length: 76},
+                {number: 6, par: 3, length: 79},
+                {number: 7, par: 3, length: 76},
+                {number: 8, par: 3, length: 65},
+                {number: 9, par: 3, length: 77},
+                {number: 10, par: 3, length: 65},
+                {number: 11, par: 3, length: 31},
+                {number: 12, par: 3, length: 65},
+            ] 
+        }
+    };
+
+    res.charSet('utf8');
+    res.send(200, course);
+});
+
 server.get('/players', function (req, res) {
     var data = [
         {value: "2525", label: "Janimatti Ellonen", uuid: uuid.v4()},

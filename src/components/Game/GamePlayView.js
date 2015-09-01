@@ -22,4 +22,8 @@ export default React.createClass({
 			</div>
 		);
 	},
+
+	componentDidMount() {
+
+	}
 });
