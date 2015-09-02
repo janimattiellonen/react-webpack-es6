@@ -20,27 +20,28 @@ server.get('/statuses', function (req, res) {
 
 server.get('/courses', function(req, res) {
     var data = [
-        {value: "11", label: "Tali", par: 57, length: 1334, holes: 18, layout: {id: 11, name: "Tali", par: 57, length: 1334, holes: 18}},
-        {value: "12", label: "Kivikko", par: 56, length: 1250, holes: 18, layout: {id: 12, name: "Kivikko", par: 56, length: 1250, holes: 18}},
-        {value: "13", label: "Oittaa" , par: 45, length: 900, holes: 12, layout: {id: 13, name: "Oittaa", par: 45, length: 900, holes: 12}},
-        {value: "14", label: "Kaatis", par: 63, length: 2193, holes: 19, layout: {id: 14, name: "19-etu", par: 63, length: 2193, holes: 19}},
-        {value: "15", label: "Kaatis", par: 63, length: 2623, holes: 19, layout: {id: 15, name: "19-taka", par: 63, length: 2623, holes: 19}},
+        {value: "11", label: "Tali", par: 57, length: 1334, holes: 18, layout: {id: 11, name: "Tali", par: 57, length: 1334, holeCount: 18}},
+        {value: "12", label: "Kivikko", par: 56, length: 1250, holes: 18, layout: {id: 12, name: "Kivikko", par: 56, length: 1250, holeCount: 18}},
+        {value: "340", label: "Oittaa" , par: 45, length: 900, holes: 12, layout: {id: 340, name: "Oittaa", par: 45, length: 900, holeCount: 12}},
+        {value: "14", label: "Kaatis", par: 63, length: 2193, holes: 19, layout: {id: 14, name: "19-etu", par: 63, length: 2193, holeCount: 19}},
+        {value: "15", label: "Kaatis", par: 63, length: 2623, holes: 19, layout: {id: 15, name: "19-taka", par: 63, length: 2623, holeCount: 19}},
     ];
 
     res.charSet('utf8');
     res.send(200, data);
 });
 
-server.get('/course/:id/layout/:lid', function(req, res) {
+server.get('/course/layout/:lid', function(req, res) {
+    console.log("Serving /course/layout/:lid...");
 
     var course = {
-        id: 340,
-        name: 'Oittaa',
+        value: 340,
+        label: 'Oittaa',
         layout: {
             id: 340,
             name: 'Oittaa',
             holeCount: 12,
-            par: 36.
+            par: 36,
             length: 867,
             holes: [
                 {number: 1, par: 3, length: 53},
@@ -58,9 +59,9 @@ server.get('/course/:id/layout/:lid', function(req, res) {
             ] 
         }
     };
-
+    console.log(JSON.stringify(course));
     res.charSet('utf8');
-    res.send(200, course);
+    res.send(200, [course]);
 });
 
 server.get('/players', function (req, res) {

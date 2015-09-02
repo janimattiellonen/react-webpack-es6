@@ -15,7 +15,7 @@ export default React.createClass({
 				<div>
 					<h3>{this.props.course.label}</h3>
 
-					Layout: {this.props.course.layout.name}, {this.props.course.layout.holes} holes, {this.props.course.layout.length}m, par {this.props.course.layout.par}
+					Layout: {this.props.course.layout.name}, {this.props.course.layout.holeCount} holes, {this.props.course.layout.length}m, par {this.props.course.layout.par}
 				</div>
 			);
 		}

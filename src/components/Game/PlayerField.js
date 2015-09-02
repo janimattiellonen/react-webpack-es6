@@ -5,7 +5,7 @@ export default React.createClass({
 
 	getInitialState() {
 		return {
-			'score': 3
+			'score': this.props.hole.par
 		}
 	},
 
@@ -15,12 +15,18 @@ export default React.createClass({
 			<div>
 				{this.props.player.label}: 
 
-				<input className="score-input" type="submit" value="-" />
-				<input className="score-input" type="text" name="score" value={this.state.score} />
-				<input className="score-input"  type="submit" value="+"  />
+				<input className="score-input" type="submit" value="-" onClick={this.decreaseScore} />
+				<input className="score-input" type="text" name="score" value={this.state.score} onChange={this.changeScore} />
+				<input className="score-input" type="submit" value="+" onClick={this.increaseScore} />
 			</div>
 		);
 	},
+
+    changeScore(evt) {
+        this.setState({
+            'score': evt.target.value
+        });
+    },
 
 	increaseScore() {
 		this.setState({
@@ -41,6 +47,6 @@ export default React.createClass({
 	setScore(score, hole) {
 		const { player, gameActions} = this.props;
 
-		gameActions.setScoreFor(player, hole, score);
+		//gameActions.setScoreFor(player, hole, score);
 	},	
 });

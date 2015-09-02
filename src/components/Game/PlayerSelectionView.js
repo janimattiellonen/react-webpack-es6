@@ -83,7 +83,6 @@ export default React.createClass({
 	},
 
 	isSubmittable() {
-		console.log(JSON.stringify(this.props));
 		return this.props.selectedPlayers && this.props.selectedPlayers.size > 0;
 	}    
 });

@@ -12,8 +12,8 @@ export default React.createClass({
 			<div>
 				{players.map(player => {
 					return(
-						<div>
-							<PlayerField player={player} />
+						<div key={player.uuid}>
+							<PlayerField key={player.uuid} player={player} hole={this.props.hole}/>
 						</div>
 					)
 				})}

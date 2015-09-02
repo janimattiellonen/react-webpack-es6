@@ -17,8 +17,15 @@ export function getCourses(d) {
 	};
 }
 
-export function setSelectedCourseId(id) {
+export function loadCourse(layoutId) {
+	return function(dispatch, getState) {
+		api.getCourse(layoutId).then(course => {
+			dispatch(selectedCourse(course.size == 1 ? course.get(0) : null));
+		});
+	};
+}
 
+export function setSelectedCourseId(id) {
 	return function(dispatch, getState) {
 		const { courses} = getState().course;
 		let found = courses.filter(course => course.value === id);

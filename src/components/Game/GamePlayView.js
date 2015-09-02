@@ -11,8 +11,12 @@ export default React.createClass({
 			<div>
 				<h3>Peli</h3>		
 
+				<div className="hole">
+					Väylä {this.props.currentHole.number}: par {this.props.currentHole.par}, {this.props.currentHole.length}m 
+				</div>
+
 				<div className="game-board">
-					<GameBoard players={this.props.selectedPlayers}/>
+					<GameBoard players={this.props.selectedPlayers} hole={this.props.currentHole}/>
 				</div>
 
 				<div className="button-panel">

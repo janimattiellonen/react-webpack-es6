@@ -13,7 +13,8 @@ import { bindActionCreators } from 'redux';
         d: state.course.d,
         selectedCourse: state.course.selectedCourse,
         selectedPlayers: state.players.selectedPlayers,
-        selectedPlayersJoined: state.players.selectedPlayersJoined
+        selectedPlayersJoined: state.players.selectedPlayersJoined,
+        currentHole: state.game.currentHole
     }
 })    
 export default class TestApp extends React.Component {
@@ -34,6 +35,7 @@ export default class TestApp extends React.Component {
                         selectedPlayers: this.props.selectedPlayers,
                         selectedPlayersJoined: this.props.selectedPlayersJoined,
                         d: this.props.d,
+                        currentHole: this.props.currentHole,
 
                         courseActions: courseActions,
                         gameActions: gameActions,

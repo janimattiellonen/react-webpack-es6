@@ -5,10 +5,14 @@ import { Button } from 'react-bootstrap';
 import CourseInfoView from "./CourseInfoView";
 import PlayerList from "./PlayerList";
 
-
 import Api from "../../api";
 
-export default React.createClass({
+export default class ConfirmSelectionsView extends React.Component {
+	constructor(props, context){
+    	super(props);
+    	console.log("CTOR: " + context.router); // will work
+    	this.context = context;
+  	}
 
 	render() {
 		const {selectedCourse, selectedPlayers} = this.props;
@@ -30,9 +34,26 @@ export default React.createClass({
 				<Button bsStyle='primary' href="/#/select-players" bsSize='small'>Muokka pelaajavalintoja</Button>
 
 				<br/><br/>
-				<Button bsStyle='primary' href="/#/game" bsSize='small'>Aloita peli!</Button>
+				<Button bsStyle='primary' onClick={this.navigate.bind(this)} bsSize='small'>Aloita peli!</Button>
 
 			</div>
 		);
 	}
-});
+
+	navigate() {
+		const { gameActions} = this.props;
+
+		gameActions.startGame();
+		this.context.router.transitionTo('game');
+	}
+
+	componentDidMount() {
+		const { courseActions, selectedCourse} = this.props;
+		console.log("ConfirmSelectionsView::componentDidMount()");
+		courseActions.loadCourse(selectedCourse.value);
+	}
+}
+
+ConfirmSelectionsView.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
