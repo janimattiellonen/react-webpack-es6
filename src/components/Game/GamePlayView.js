@@ -20,11 +20,21 @@ export default React.createClass({
 				</div>
 
 				<div className="button-panel">
-					<Button><Glyphicon glyph='arrow-left' />Edellinen väylä</Button>	
-					<Button><Glyphicon glyph='arrow-right' className="pull-right"/>Seuraava väylä</Button>	
+					<Button onClick={this.previousHole}><Glyphicon glyph='arrow-left' />Edellinen väylä</Button>	
+					<Button onClick={this.nextHole}><Glyphicon glyph='arrow-right' className="pull-right"/>Seuraava väylä</Button>	
 				</div>
 			</div>
 		);
+	},
+
+	previousHole() {
+		console.log("GamePlayView::previousHole()");
+		this.props.gameActions.previousHole();
+	},
+
+	nextHole() {
+		console.log("GamePlayView::nextHole()");
+		this.props.gameActions.nextHole();
 	},
 
 	componentDidMount() {
