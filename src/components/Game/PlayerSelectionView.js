@@ -12,7 +12,6 @@ export default React.createClass({
 		let self = this;
 
 		let getOptions = function(input, callback) {	
-			console.log("INPUT2: " + input);
 		    setTimeout(() => {
 		    	self.loadPlayers(input, callback);
 		    }, 500);
@@ -69,16 +68,14 @@ export default React.createClass({
 			
     		let selections = {options: players.toArray()};
 			callback(null, selections);
-			this.props.playerActions.setPlayers(players, d);
+			this.props.playerActions.receivePlayers(players, d);
 		});
 
 	},
 
 	changeValue(newValue) {
 		const { playerActions } = this.props;
-		console.log("new player id: " + newValue);
 		let selectedPlayerIds = newValue.split(",");
-		console.log("selected player ids: " + selectedPlayerIds + ", size: " + selectedPlayerIds.length);
 	    playerActions.setSelectedPlayerIds(selectedPlayerIds);
 	},
 

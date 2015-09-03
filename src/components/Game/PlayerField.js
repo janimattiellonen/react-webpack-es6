@@ -22,9 +22,17 @@ export default React.createClass({
 		);
 	},
 
+	componentDidMount() {
+		const { player, gameActions} = this.props;
+
+		this.setState({
+			score: gameActions.getScoreFor(player, 1)
+		});
+	},
+
     changeScore(evt) {
         this.setState({
-            'score': evt.target.value
+            'score': parseInt(evt.target.value)
         });
     },
 
@@ -44,9 +52,9 @@ export default React.createClass({
 		this.setScore(this.state.score - 1, this.props.hole.number);
 	},
 
-	setScore(score, hole) {
+	setScore(score, holeNumber) {
 		const { player, gameActions} = this.props;
 
-		//gameActions.setScoreFor(player, hole, score);
+		gameActions.setScoreFor(score, holeNumber, player);
 	},	
 });

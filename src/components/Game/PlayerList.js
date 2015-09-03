@@ -16,7 +16,6 @@ export default React.createClass({
 		return (
 			<div className="player-list">
 				{this.props.players.map(player => {
-					console.log("PLAYER: " + JSON.stringify(player));
 					return (<Player key={player.uuid} player={player} />)
 				})}
 			</div>

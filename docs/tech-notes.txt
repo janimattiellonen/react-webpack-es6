@@ -31,3 +31,20 @@ Starting a new game:
 		- load complete course details such as hole data
 			- hole data not required when selecting course and players for the game
 			- optionally load complete course details when the user selects a course
+
+
+
+
+Keeping scores:
+
+- gameActions:
+	- scores: 
+		- playerId [fairway : score]: [
+			1: 3
+			2: 2
+			3: 3
+			4: 3
+
+
+
+		]

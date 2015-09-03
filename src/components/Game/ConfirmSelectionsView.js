@@ -49,7 +49,7 @@ export default class ConfirmSelectionsView extends React.Component {
 
 	componentDidMount() {
 		const { courseActions, selectedCourse} = this.props;
-		console.log("ConfirmSelectionsView::componentDidMount()");
+		
 		courseActions.loadCourse(selectedCourse.value);
 	}
 }

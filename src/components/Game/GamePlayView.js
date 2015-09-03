@@ -16,7 +16,7 @@ export default React.createClass({
 				</div>
 
 				<div className="game-board">
-					<GameBoard players={this.props.selectedPlayers} hole={this.props.currentHole}/>
+					<GameBoard players={this.props.selectedPlayers} hole={this.props.currentHole} gameActions={this.props.gameActions} />
 				</div>
 
 				<div className="button-panel">
@@ -28,12 +28,10 @@ export default React.createClass({
 	},
 
 	previousHole() {
-		console.log("GamePlayView::previousHole()");
 		this.props.gameActions.previousHole();
 	},
 
 	nextHole() {
-		console.log("GamePlayView::nextHole()");
 		this.props.gameActions.nextHole();
 	},
 

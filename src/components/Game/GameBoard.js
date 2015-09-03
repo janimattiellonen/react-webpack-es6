@@ -13,7 +13,7 @@ export default React.createClass({
 				{players.map(player => {
 					return(
 						<div key={player.uuid}>
-							<PlayerField key={player.uuid} player={player} hole={this.props.hole}/>
+							<PlayerField key={player.uuid} player={player} hole={this.props.hole} gameActions={this.props.gameActions} />
 						</div>
 					)
 				})}

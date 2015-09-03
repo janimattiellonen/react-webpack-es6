@@ -2,9 +2,9 @@ import api from '../api'
 import store from 'store';
 import _ from 'lodash';
 
-export function setPlayers(players, d) {
+export function receivePlayers(players, d) {
     return {
-        type: 'SET_PLAYERS',
+        type: 'RECEIVE_PLAYERS',
         players: players,
         d: d
     };
@@ -30,9 +30,6 @@ export function selectedPlayers(selectedPlayers) {
     {
         ids.push(player.value);
     });
-
-    console.log("PlayerActions.selectedPlayers(): selected players: " + JSON.stringify(selectedPlayers));
-    console.log("PlayerActions.selectedPlayers(): selected player ids: " + JSON.stringify(ids));
 
     let selectedPlayersJoined = ids.join(',');
 

@@ -7,6 +7,13 @@ export default handleActions({
 			...state,
 			currentHole: action.currentHole
 		};
+	},
+
+	SET_PLAYERS: (state, action) => {
+		return {
+			...state,
+			players: action.players
+		};
 	}
 
-}, {currentHole: {}});
+}, {currentHole: {}, players: {} });

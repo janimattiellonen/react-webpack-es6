@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default handleActions({
 
-	SET_PLAYERS: (state, action) => {
+	RECEIVE_PLAYERS: (state, action) => {
 		
 		return {
 			...state,
