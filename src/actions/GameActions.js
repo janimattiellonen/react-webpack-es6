@@ -12,7 +12,7 @@ export function startGame() {
 		let selectedPlayers = getState().players.selectedPlayers;
 
 		selectedPlayers.forEach(function(player, index) {
-			player.scores = [];
+			player.scores = Immutable.Map()
 		});
 
 		dispatch(setPlayers(selectedPlayers));
@@ -65,24 +65,18 @@ export function currentHole(currentHole) {
 	};
 }
 
-export function foo() {
-	console.log("FOOOOOOO");
-
-	return function(dispatch, getState) {
-
-	};
-}
-
 export function getScoreFor (player, holeNumber) {
 	return function(dispatch, getState) {
-
-
-		return 5;
+		return gameManager.getScoreFor(player.value, holeNumber);
 	};
 }
 
 export function setScoreFor(score, holeNumber, player) {
 
-	gameManager.setScoreFor(score, holeNumber, player);
+	gameManager.setScoreFor(score, holeNumber, player.value);
+
+	return function(dispatch, getState) {
+		
+	};
 
 }

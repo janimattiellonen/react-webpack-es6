@@ -26,7 +26,19 @@ export default React.createClass({
 		const { player, gameActions} = this.props;
 
 		this.setState({
-			score: gameActions.getScoreFor(player, 1)
+			score: gameActions.getScoreFor(player, this.props.hole.number)
+		});
+	},
+
+	componentWillReceiveProps(nextProps) {
+		const { player, gameActions} = nextProps;
+
+		console.log("next props: " + JSON.stringify(nextProps));
+
+		console.log("componentWillReceiveProps(): hole number: " + nextProps.hole.number + ", score: " + gameActions.getScoreFor(player, nextProps.hole.number));
+
+		this.setState({
+			score: gameActions.getScoreFor(player, nextProps.hole.number),
 		});
 	},
 
@@ -34,12 +46,16 @@ export default React.createClass({
         this.setState({
             'score': parseInt(evt.target.value)
         });
+
+        this.setScore(parseInt(evt.target.value), this.props.hole.number);
     },
 
 	increaseScore() {
 		this.setState({
 			'score': this.state.score + 1
 		});
+
+		console.log("increaseScore(), score: " + (this.state.score + 1) + ", hole: " + this.props.hole.number);
 
 		this.setScore(this.state.score + 1, this.props.hole.number);
 	},
