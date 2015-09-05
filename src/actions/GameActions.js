@@ -7,19 +7,20 @@ let gameManager = new GameManager();
 export function startGame() {
 	return function(dispatch, getState) {
 		// do we even need to call dispatch?
-		dispatch(setCurrentHoleNumber(1));
+		
 
 		let selectedPlayers = getState().players.selectedPlayers;
 
 		selectedPlayers.forEach(function(player, index) {
 			player.scores = Immutable.Map()
 		});
-
-		dispatch(setPlayers(selectedPlayers));
 		
 		gameManager.setCourse(getState().course.selectedCourse);
 		gameManager.setPlayers(selectedPlayers);
 		gameManager.setCurrentHoleNumber(1);
+
+		dispatch(setPlayers(selectedPlayers));
+		dispatch(setCurrentHoleNumber(1));
 	};
 }
 
