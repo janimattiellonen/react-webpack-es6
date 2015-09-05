@@ -38,7 +38,7 @@ export default class GameManager {
 
 	getScoreFor(playerId, holeNumber) {
 		let score = this.players.get(parseInt(playerId)).scores.get(parseInt(holeNumber));
-		
-		return score ? score : 0;
+
+		return score ? score : Immutable.List(this.course.layout.holes).get(holeNumber - 1).par;
 	}
 }

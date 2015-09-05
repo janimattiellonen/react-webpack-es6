@@ -33,7 +33,7 @@ export default React.createClass({
 					<h2><strong>{course.label}</strong></h2>
 
 					<p>
-						<strong>Layout:</strong> {course.layout.name}: {course.layout.holes}, par {course.layout.par}, {course.layout.length}m
+						<strong>Layout:</strong> {course.layout.name}: {course.layout.holeCount}, par {course.layout.par}, {course.layout.length}m
 					</p>
 				</div>
 			);
