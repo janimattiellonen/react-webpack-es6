@@ -1,4 +1,5 @@
 import Immutable from "immutable";
+import _ from "lodash";
 
 export default class GameManager {
 
@@ -40,5 +41,27 @@ export default class GameManager {
 		let score = this.players.get(parseInt(playerId)).scores.get(parseInt(holeNumber));
 
 		return score ? score : Immutable.List(this.course.layout.holes).get(holeNumber - 1).par;
+	}
+
+	getTotalScoreFor(playerId) {
+		let player = this.players.get(parseInt(playerId));
+		let totalScore = _.sum(player.scores.toArray(), function(score) {
+			return score;
+		});
+
+		return totalScore;
+	}
+
+	getTotalParFor(playerId) {
+		let player = this.players.get(parseInt(playerId));
+		let totalScore = this.getTotalScoreFor(playerId);
+
+		let totalPar = _.sum(this.course.layout.holes, function(hole) {
+			let playerScore = player.scores.get(hole.number - 1);
+
+			return playerScore != undefined ? hole.par : 0;
+		});
+
+		return totalScore - totalPar;
 	}
 }

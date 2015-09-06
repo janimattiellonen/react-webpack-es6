@@ -5,10 +5,7 @@ import GameManager from '../components/Game/GameManager';
 let gameManager = new GameManager();
 
 export function startGame() {
-	return function(dispatch, getState) {
-		// do we even need to call dispatch?
-		
-
+	return function(dispatch, getState) {		
 		let selectedPlayers = getState().players.selectedPlayers;
 
 		selectedPlayers.forEach(function(player, index) {
@@ -79,5 +76,18 @@ export function setScoreFor(score, holeNumber, player) {
 	return function(dispatch, getState) {
 		
 	};
+}
 
+export function getTotalScoreFor(player) {
+
+	return function(dispatch, getState) {
+		return gameManager.getTotalScoreFor(player.value);
+	}
+}
+
+export function getTotalParFor(player) {
+
+	return function(dispatch, getState) {
+		return gameManager.getTotalParFor(player.value);
+	}
 }

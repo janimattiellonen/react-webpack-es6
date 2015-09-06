@@ -5,7 +5,9 @@ export default React.createClass({
 
 	getInitialState() {
 		return {
-			'score': this.props.hole.par
+			'score': this.props.hole.par,
+			'totalScore': 0,
+			'totalPar': 0
 		}
 	},
 
@@ -18,6 +20,8 @@ export default React.createClass({
 				<input className="score-input" type="submit" value="-" onClick={this.decreaseScore} />
 				<input className="score-input" type="text" name="score" value={this.state.score} onChange={this.changeScore} />
 				<input className="score-input" type="submit" value="+" onClick={this.increaseScore} />
+
+				<span className="player-total-score">{this.state.totalScore} ({this.state.totalPar})</span>
 			</div>
 		);
 	},
@@ -26,7 +30,9 @@ export default React.createClass({
 		const { player, gameActions} = this.props;
 
 		this.setState({
-			score: gameActions.getScoreFor(player, this.props.hole.number)
+			score: gameActions.getScoreFor(player, this.props.hole.number),
+			totalScore: gameActions.getTotalScoreFor(player),
+			totalPar: gameActions.getTotalParFor(player)
 		});
 	},
 
@@ -35,6 +41,8 @@ export default React.createClass({
 
 		this.setState({
 			score: gameActions.getScoreFor(player, nextProps.hole.number),
+			totalScore: gameActions.getTotalScoreFor(player),
+			totalPar: gameActions.getTotalParFor(player)
 		});
 	},
 
