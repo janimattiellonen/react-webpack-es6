@@ -1,5 +1,6 @@
 import React from "react";
 import Immutable from "immutable";
+import GameUtils from "./GameUtils";
 
 export default React.createClass({
 
@@ -21,7 +22,7 @@ export default React.createClass({
 				<input className="score-input" type="text" name="score" value={this.state.score} onChange={this.changeScore} />
 				<input className="score-input" type="submit" value="+" onClick={this.increaseScore} />
 
-				<span className="player-total-score">{this.state.totalScore} ({this.state.totalPar})</span>
+				<span className="player-total-score">{this.state.totalScore} ({GameUtils.score(this.state.totalPar)})</span>
 			</div>
 		);
 	},
@@ -55,16 +56,23 @@ export default React.createClass({
 	},
 
 	decreaseScore() {
-		this.setScore(this.state.score - 1, this.props.hole.number);
+		if (this.state.score > 1) {
+			this.setScore(this.state.score - 1, this.props.hole.number);
+		}
 	},
 
 	setScore(score, holeNumber) {
 		const { player, gameActions} = this.props;
+		
+		gameActions.setScoreFor(score, holeNumber, player);
+
+		let totalScore = gameActions.getTotalScoreFor(player);
+		let totalPar = gameActions.getTotalParFor(player);
 
 		this.setState({
-            'score': score
+            score: score,
+			totalScore: totalScore,
+			totalPar: totalPar
         });
-
-		gameActions.setScoreFor(score, holeNumber, player);
 	},	
 });

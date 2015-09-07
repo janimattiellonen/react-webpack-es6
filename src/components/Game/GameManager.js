@@ -29,7 +29,6 @@ export default class GameManager {
 	}
 
 	setScoreFor(score, holeNumber, playerId) {
-
 		let player = this.players.get(parseInt(playerId));
 
 		player.scores = player.scores.set(parseInt(holeNumber), score);
@@ -57,9 +56,9 @@ export default class GameManager {
 		let totalScore = this.getTotalScoreFor(playerId);
 
 		let totalPar = _.sum(this.course.layout.holes, function(hole) {
-			let playerScore = player.scores.get(hole.number - 1);
+			let playerScore = player.scores.get(hole.number);
 
-			return playerScore != undefined ? hole.par : 0;
+			return playerScore != undefined ? parseInt(hole.par) : 0;
 		});
 
 		return totalScore - totalPar;
